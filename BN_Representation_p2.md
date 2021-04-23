@@ -1,10 +1,13 @@
-# Bayesian Network: Inference
+# Bayesian Network: Representation
 
 ## Table of Content
-- [BN Examples](#bn-examples)
+- [Bayesian Network: Representation](#bayesian-network-representation)
+  - [Table of Content](#table-of-content)
+  - [Bayes' Net Examples](#bayes-net-examples)
+  - [Bayes' Net Semantics](#bayes-net-semantics)
 
 
-## BN Examples
+## Bayes' Net Examples
 These are some examples of how uncertain environment variables can be modeled as Bayesian Networks. Try to justify relations between those variable to get a better grasp of how BN works.
 - ### Coin Flips
     Problem of tossing n independent coins is an example of modeling a probabilistic environment. No interaction between coins results absolute independency.
@@ -52,3 +55,8 @@ These are some examples of how uncertain environment variables can be modeled as
       - J: John calls
       - E: Earthquake
     - Representation: <!-- BN !-->
+
+## Bayes' Net Semantics
+BN is a directed acyclic graph in which every node refers to the probability of a random variable X conditioned to its parents. Here 
+$$P(X | A_1, A_2, A_3, .., A_n)$$
+means probability distribution of any x
