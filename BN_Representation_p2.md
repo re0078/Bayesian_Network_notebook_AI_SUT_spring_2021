@@ -4,6 +4,7 @@
 - [**Bayesian Network: Representation**](#bayesian-network-representation)
   - [**Table of Content**](#table-of-content)
   - [**Bayes' Net Examples**](#bayes-net-examples)
+  - [**Bayes' Net Semantics**](#bayes-net-semantics)
     - [**example**](#example)
     - [**Joint Dist. Validation**](#joint-dist-validation)
     - [**What Cond. Independencies could be implied?**](#what-cond-independencies-could-be-implied)
@@ -15,13 +16,16 @@
       - [**Second Traffic** 2](#second-traffic-2)
       - [**Alarm Network** 2](#alarm-network-2)
   - [**Bayes' Net Size Analysis**](#bayes-net-size-analysis)
+  - [Does Bayes' Net Necessarily Represent Causal Relations?](#does-bayes-net-necessarily-represent-causal-relations)
+    - [What Does Bayes' Net Really Represent?](#what-does-bayes-net-really-represent)
+  - [Conditional Independencies in Bayes' Net](#conditional-independencies-in-bayes-net)
 
 
 ## **Bayes' Net Examples**
-These are some examples of how uncertain environment variables can be modeled as Bayesian Networks. Try to justify relations between those variable to get a better grasp of how BN works.
+These are some examples of how uncertain environment variables can be modeled as Bayesian Network. Try to justify relations between those variable to get a better grasp of how BN works.
 
 - ### **Coin Flips** 1
-    Problem of tossing n independent coins is an example of modeling a probabilistic environment. No interaction between coins results absolute independency.
+    Problem of tossing n independent coins is an example of modeling a probabilistic environment. No interaction between coins results in absolute independency.
 
     <figure>
     <img src="./images/coin_flip_example.png" alt="drawing" width="400">
@@ -36,7 +40,7 @@ These are some examples of how uncertain environment variables can be modeled as
     - Two models can be considered for such a problem:
         - independent <br>
             <img src="./images/coin_flip_example.png" alt="drawing" width="200">
-        - independent<br>
+        - dependent<br>
             <img src="./images/coin_flip_example.png" alt="drawing" width="200">
 
 - ### **Second Traffic** 1
@@ -48,10 +52,10 @@ These are some examples of how uncertain environment variables can be modeled as
       - L: Low air pressure.
       - D: Stadium roof drips.
       - B: There is a ballgame.
-      - C: There is a cavity in *Russell* 's teeth.
+      - C: There is a cavity in *Russell* 's teeth (name of the green monster).
 
     - Model: 
-        Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being hold also might cause traffic and rain causes drips from stadium roof. Russell's tooth cavity (name of the green monster) is independent from other variables, so BN of this environment is presented in the following figure:
+        Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent from other variables, so BN of this environment is presented in the following figure:
 
         <img src="./images/traffic_II_example.png" alt="drawing" width="300">
         
@@ -67,7 +71,7 @@ These are some examples of how uncertain environment variables can be modeled as
       - E: Earthquake
     - Representation: <!-- BN !-->
 
-##** Bayes' Net Semantics**
+## **Bayes' Net Semantics**
 BN is a directed acyclic graph in which every node refers to the probability of a random variable X conditioned to its parents. Here 
 $$P(X | A_1, A_2, A_3, .., A_n)$$
 means probability distribution of any x conditioned to every possible combination of its parents (A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>, ....A<sub>n</sub>).  All these probability combinations are gathered in a table called conditional probability table (CPT). The following figure shows an example of CPT:
@@ -75,7 +79,7 @@ means probability distribution of any x conditioned to every possible combinatio
 <br>
 So every BN consists of **Topology**(graph) and **Local Conditional Probabilities**.
 
-Bayes' Net *implicitly* encodes joint distribution. Joint distribution of random variables included in a BN is calculated using the product of all local conditional distributions. The explicit formula is
+Bayes' Net *implicitly* encodes joint distribution. Joint distribution of random variables included in a BN is calculated using the product of all local conditional distributions. The following equation shows explicit formula:
 
 $$P(x_1,x_2,x_3,..,x_n) = \prod_{i=1}^{n}P(x_i|parents(X_i))$$
 
@@ -122,7 +126,7 @@ This results in:
 $$
 \Rightarrow P(x_1,x_2,x_3,..,x_n) = \prod_{i=1}^{n}P(x_i|parents(X_i))
 $$
-These equations show that there are some independency assumptions embedded in a BN; every node conditioned to its parents is independent from non-parent nodes that come before it according to topological order - called *predecessors* for short.
+These equations show that there are some independency assumptions embedded in a BN; every node conditioned to its parents is independent from non-parent nodes that come before it, according to topological order - called *predecessors* for short.
 
 Now does the reverse procedure also hold? In other way does 
 $$
@@ -168,3 +172,48 @@ As shown the [Alarm Network](#alarm-network-2) example every node holds a CPT of
 $$
 \sum_{any \ node \ x} 2^{\ number \ of \ parents \ of \ x} \le 2^n
 $$
+
+
+## Does Bayes' Net Necessarily Represent Causal Relations?
+When BN reflects true causal patterns:
+- nodes have fewer parents and it makes the BN simpler, 
+- it's easier to think about what the BN mean, 
+- and the interpretation from it is very easier.
+
+Assume we have 3 random variables:
+- R: It rains.
+- T: There is traffic.
+- D: Roof drips.
+
+Its BN would be like this:
+<!-- BN Figure -->
+
+Now if our agent is not able to know about whether it's raining or not, It will have only 2 random variables (T, D) and the BN will be one of these two(since T and D are not independent):
+<!-- 2nd BN figure -->
+
+So there might be an arrow from T to D or back from D to T, when there is no causal relation between them. In conclusion, BN do not necessarily reflect a causal pattern.
+
+### What Does Bayes' Net Really Represent?
+BN topology may happen to encode causal structure, but what it really encodes is conditional independence (Local Cond. Indep.)
+
+
+## Conditional Independencies in Bayes' Net
+<!-- BN Image page 39-->
+In this BN we already know these relations:
+$$
+\begin{cases}
+    W \mkern10mu \rlap{\_}|| \mkern10mu X \mkern10mu | \mkern10mu Z \\
+    W \mkern10mu \rlap{\_}|| \mkern10mu Y \mkern10mu | \mkern10mu Z
+\end{cases}
+$$
+is the following independency concluded?
+$$
+W \mkern10mu \rlap{\_}|| \mkern10mu X \mkern10mu | \mkern10mu Y
+$$
+We'll prove P(W|X,Y) is constant with respect to X.
+$$
+P(W|X,Y) = \sum_Z P(W,Z|X,Y) = \sum_Z \frac{P(W,Z,X,Y)}{P(X,Y)} \\
+= \sum_Z \frac{P(X)P(Y|X)P(Z|Y)P(W|Z)}{P(X)P(Y|X)} = \sum_Z P(Z|Y)P(W|Z) \\ \Rightarrow const.\ w.r.t.\ X
+$$
+
+So Here is a cond. independency that can be concluded from BN. Is there any algorithm that can exploit all possible cond. independencies?
