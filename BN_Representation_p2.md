@@ -13,7 +13,6 @@
       - [**Coin Flips** 2](#coin-flips-2)
       - [**Traffic** 2](#traffic-2)
       - [**Reverse Traffic** 1](#reverse-traffic-1)
-      - [**Second Traffic** 2](#second-traffic-2)
       - [**Alarm Network** 2](#alarm-network-2)
   - [**Bayes' Net Size Analysis**](#bayes-net-size-analysis)
   - [Does Bayes' Net Necessarily Represent Causal Relations?](#does-bayes-net-necessarily-represent-causal-relations)
@@ -38,10 +37,11 @@ These are some examples of how uncertain environment variables can be modeled as
         - T: There is a traffic on the road.
     
     - Two models can be considered for such a problem:
-        - independent <br>
-            <img src="./images/coin_flip_example.png" alt="drawing" width="200">
-        - dependent<br>
-            <img src="./images/coin_flip_example.png" alt="drawing" width="200">
+     <br>
+      <img src="./images/rain_traffic_1.png" alt="drawing" width="200">
+      <br>
+      An agent using dependent model usually is more realistic.
+  
 
 - ### **Second Traffic** 1
     <img src="./images/traffic_II_example.png" alt="drawing" width="500">
@@ -57,7 +57,7 @@ These are some examples of how uncertain environment variables can be modeled as
     - Model: 
         Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent from other variables, so BN of this environment is presented in the following figure:
 
-        <img src="./images/traffic_II_example.png" alt="drawing" width="300">
+        <img src="./images/second_traffic_1.png" alt="drawing" width="300">
         
         In this environment rain can cause ballgame be canceled, so B is slightly dependent on R which is shown by blue arrow from R to B, but to keep our model as simple as possible, we tend to not include this relation in our BN. This results in ignoring some information from problem's environment, So we need to keep a balance between model simplicity and information loss.
 
@@ -69,14 +69,15 @@ These are some examples of how uncertain environment variables can be modeled as
       - M: Marry calls
       - J: John calls
       - E: Earthquake
-    - Representation: <!-- BN !-->
+    - Representation: <br>
+      <img src="./images/alarm_network_1.png" alt="drawing" width="180">
 
 ## **Bayes' Net Semantics**
 BN is a directed acyclic graph in which every node refers to the probability of a random variable X conditioned to its parents. Here 
 $$P(X | A_1, A_2, A_3, .., A_n)$$
 means probability distribution of any x conditioned to every possible combination of its parents (A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>, ....A<sub>n</sub>).  All these probability combinations are gathered in a table called conditional probability table (CPT). The following figure shows an example of CPT:
-<img src="./images/coin_flip_example.png" alt="drawing" width="400">
-<br>
+
+<img src="./images/bn_semantics.png" alt="drawing" width="200"><br>
 So every BN consists of **Topology**(graph) and **Local Conditional Probabilities**.
 
 Bayes' Net *implicitly* encodes joint distribution. Joint distribution of random variables included in a BN is calculated using the product of all local conditional distributions. The following equation shows explicit formula:
@@ -87,7 +88,7 @@ where x<sub>i</sub> is an observation of X<sub>i</sub>.
 
 ### **example**
 Here is an example of how a joint distribution is embedded in a BN:
-<img src="./images/coin_flip_example.png" alt="drawing" width="400"><br>
+<img src="./images/joint_example.png" alt="drawing" width="400"><br>
 To compute P(+cavity, +catch, -toothache):
 $$P(+cavity, +catch, -toothache) = \\P(+cavity|parents(Cavity))  \times P(+catch|parents(Catch)) \\\times P(+toothache|parents(Toothache)) \\
 = P(+cavity) \times P(+catch|+cavity) \times P(-toothache|+cavity)$$
@@ -160,11 +161,16 @@ $$
 ### **Bayes' Net Probability Examples**
 
 #### **Coin Flips** 2
+<img src="./images/joint_example.png" alt="drawing" width="400"><br>
+
 #### **Traffic** 2
+<img src="./images/traffic_2.png" alt="drawing" width="400"><br>
+
 #### **Reverse Traffic** 1
-#### **Second Traffic** 2
+<img src="./images/reverse_traffic_1.jpg" alt="drawing" width="400"><br>
+
 #### **Alarm Network** 2
-<!-- TODO: Add figure -->
+<img src="./images/alarm_network_2.png" alt="drawing" width="800"><br>
 
 
 ## **Bayes' Net Size Analysis**
@@ -186,10 +192,12 @@ Assume we have 3 random variables:
 - D: Roof drips.
 
 Its BN would be like this:
-<!-- BN Figure -->
+
+<img src="./images/causal_relation_p1.png" alt="drawing" ><br>
 
 Now if our agent is not able to know about whether it's raining or not, It will have only 2 random variables (T, D) and the BN will be one of these two(since T and D are not independent):
-<!-- 2nd BN figure -->
+
+<img src="./images/causal_relation_p2.png" alt="drawing"><br>
 
 So there might be an arrow from T to D or back from D to T, when there is no causal relation between them. In conclusion, BN do not necessarily reflect a causal pattern.
 
@@ -198,7 +206,8 @@ BN topology may happen to encode causal structure, but what it really encodes is
 
 
 ## Conditional Independencies in Bayes' Net
-<!-- BN Image page 39-->
+<img src="./images/cond_indep_intro.png" alt="drawing" width="400"><br>
+
 In this BN we already know these relations:
 $$
 \begin{cases}
