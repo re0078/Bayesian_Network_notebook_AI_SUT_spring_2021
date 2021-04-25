@@ -55,7 +55,7 @@ These are some examples of how uncertain environment variables can be modeled as
       - C: There is a cavity in *Russell* 's teeth (name of the green monster).
 
     - Model: 
-        Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent from other variables, so BN of this environment is presented in the following figure:
+        Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent of other variables, so BN of this environment is presented in the following figure:
 
         <img src="./images/second_traffic_1.png" alt="drawing" width="300">
         
@@ -129,7 +129,7 @@ This results in:
 $$
 \Rightarrow P(x_1,x_2,x_3,..,x_n) = \prod_{i=1}^{n}P(x_i|parents(X_i))
 $$
-These equations show that there are some independency assumptions embedded in a BN; every node conditioned to its parents is independent from non-parent nodes that come before it, according to topological order - called *predecessors* for short.
+These equations show that there are some independency assumptions embedded in a BN; every node conditioned to its parents is independent of non-parent nodes that come before it, according to topological order - called *predecessors* for short.
 
 Now does the reverse procedure also hold? In other way does 
 $$
