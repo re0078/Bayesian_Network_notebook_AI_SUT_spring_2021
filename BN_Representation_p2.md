@@ -88,6 +88,8 @@ where x<sub>i</sub> is an observation of X<sub>i</sub>.
 
 ### **example**
 Here is an example of how a joint distribution is embedded in a BN:
+
+
 <img src="./images/joint_example.png" alt="drawing" width="400"><br>
 To compute P(+cavity, +catch, -toothache):
 $$P(+cavity, +catch, -toothache) = \\P(+cavity|parents(Cavity))  \times P(+catch|parents(Catch)) \\\times P(+toothache|parents(Toothache)) \\
@@ -161,7 +163,7 @@ $$
 ### **Bayes' Net Probability Examples**
 
 #### **Coin Flips** 2
-<img src="./images/joint_example.png" alt="drawing" width="400"><br>
+<img src="./images/coin_flip_2.png" alt="drawing" ><br>
 
 #### **Traffic** 2
 <img src="./images/traffic_2.png" alt="drawing" width="400"><br>
