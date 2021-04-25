@@ -5,6 +5,8 @@
   - [**Table of Content**](#table-of-content)
   - [**D-separation**](#d-separation)
   - [**Structure Implifications**](#structure-implifications)
+  - [Topology limits distributions](#topology-limits-distributions)
+  - [Summary](#summary)
 
 
 ## **D-separation**
@@ -193,3 +195,20 @@ There are some structures that d-separation algorithm does a great job on and wi
 - For the second one, given Y, X and Z are conditionally independent. (Causal Chains)
 - For the third one, X and Z are conditionally independent in general case. (Common Effect)
 - For the last one, no conditional independency is concluded.
+
+## Topology limits distributions
+These conditional independencies enable us to group probabilistic models. There are 3 types of triple sets regarding to independency which is shown in the following figure:
+
+<img src="./Images_P3/conditional_indep_types.png" alt="drawing" width="600">
+
+- Green colored independency triples in which every pair of RVs are independent of each other.(G)
+- Red colored independency triples in which two RVs are independent given the 3rd one.(R)
+- Blue colored independency tirples in which no independency is found.(B)
+
+The following relation holds:
+$$G \subset R \subset B$$
+
+
+## Summary
+Bayes' Net is a directed acyclic graph that compactly encodes joint distribution and there are guaranteed independencies of distrubutions that can be deduced from it. 
+D-separation is a method to exploit these guaranteed independencies from Bayes' Net, but exploiting all possible independencies needs precise calculations using CPTs or particular assumtions of RVs.
