@@ -18,7 +18,7 @@ In this section we're going to present a procedure named D-separation which dete
 - ### **Causal chains**
     First configuration is "causal chain".
      <figure>
-    <img src="./Images_P3/picture1.png" alt="drawing" width="600">
+    <img src="./images_p3/picture1.png" alt="drawing" width="600">
     <figcaption>&emsp;&emsp;&emsp;X: Low pressure &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Y: Rain &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Z: Traffic <br/>&emsp;&emsp;&emsp;P(x, y, z) = P(x) P(y|x) P(z|y)</figcaption>
     </figure>
 
@@ -46,7 +46,7 @@ In this section we're going to present a procedure named D-separation which dete
 - ### **Common cause**
      Second configuration is "common cause".
      <figure>
-    <img src="./Images_P3/picture2.png" alt="drawing" width="600">
+    <img src="./images_p3/picture2.png" alt="drawing" width="600">
     <figcaption> P(x, y, z) = P(y) P(x|y) P(z|y) </figcaption>
     </figure>
 
@@ -68,7 +68,7 @@ In this section we're going to present a procedure named D-separation which dete
 - ### **Common effect**
     Last configuration is "common effect" and sometimes called V-Structure.
      <figure>
-    <img src="./Images_P3/picture3.png" alt="drawing" >
+    <img src="./images_p3/picture3.png" alt="drawing" width="300" >
     <figcaption> P(x, y, z) = P(x) P(y) P(z|x, y) </figcaption>
     </figure>
 
@@ -109,7 +109,7 @@ In this section we're going to present a procedure named D-separation which dete
 - ### **General Case** 
     Now with these three cases, we want to check that in any arbitary graph, what conditional independencies can be found.
     <figure>
-    <img src="./Images_P3/picture4.png" alt="drawing" width="400">
+    <img src="./images_p3/picture4.png" alt="drawing" width="400">
     </figure>
 
     Usually in this case, having two random variables, the question is "given some other variables of that BN, are the two determined RVs independent or not?" <br/>
@@ -119,7 +119,7 @@ In this section we're going to present a procedure named D-separation which dete
         First we shade the evidence nodes in the graph and then look for undirected paths between the two determined RVs that we want to check independency between them, in the resulting graph. The first rule is if two nodes are connected by an undirected path blocked by a shaded node, they are conditionally independent. This rule almost works everywhere except for V-structured paths where the bottom node is shaded.
 
         <figure>
-        <img src="./Images_P3/picture5.png" alt="drawing" height = "300" width="300">
+        <img src="./images_p3/picture5.png" alt="drawing" width="200">
         <figcaption> given R, L and B are conditionally independent <br/>cause the path between them is blocked by R. </figcaption>
         </figure>
 
@@ -136,7 +136,7 @@ In this section we're going to present a procedure named D-separation which dete
         The active and inactive triples are shown in the figure below.
 
         <figure>
-        <img src="./Images_P3/picture6.png" alt="drawing" width="400">
+        <img src="./images_p3/picture6.png" alt="drawing" width="400">
         </figure>
         
         Notice that a single inactive triple makes a path inactive and for claiming independency between X and Y, we need all paths to be inactive. If part of paths are inactive and part of them are active, neither we can say X and Y are independent nor we can say X and Y are dependant but probably we can make an example for these cases that shows X and Y are dependent.
@@ -150,7 +150,7 @@ In this section we're going to present a procedure named D-separation which dete
         1. we want to check out conditionally independency between R and B with different evidences in the Bayes Net below.
 
         <figure>
-        <img src="./Images_P3/picture7.png" alt="drawing" width="300">
+        <img src="./images_p3/picture7.png" alt="drawing" width="150">
         </figure>
 
         - **without evidence:** There is only one path between R and B and that's an inactive path according to third type of inactive triples which was shown already, so R and B are independent.
@@ -159,7 +159,7 @@ In this section we're going to present a procedure named D-separation which dete
 
         1.     
         <figure>
-        <img src="./Images_P3/picture8.png" alt="drawing" width="300">
+        <img src="./images_p3/picture8.png" alt="drawing" width="200">
         </figure>
 
         - **independency between L and T', evidence = T:** There is only one path between L and T' and that's an inactive path according to first type of inactive triples which was shown already, so L and T' are independent given T.
@@ -171,7 +171,7 @@ In this section we're going to present a procedure named D-separation which dete
         1. We want to check out conditionally independency between T and D with different evidences in the Bayes Net below.
 
         <figure>
-        <img src="./Images_P3/picture9.png" alt="drawing" width="300">
+        <img src="./images_p3/picture9.png" alt="drawing" width="150">
         </figure>
 
         - **without evidence:** There are two paths between T and D and upper path is an active path according to second type of active triples which was shown already and lower path is an inactive path according to third type of inactive triples, so L and T aren't guarateed to be independent.
@@ -188,7 +188,7 @@ D-separation's main concern is to find conditional independecies only from BN st
 There are some structures that d-separation algorithm does a great job on and will find all of the conditional independencies. Here are some examples:
 
 <figure>
-<img src="./Images_P3/picture10.png" alt="drawing" width="300">
+<img src="./images_p3/picture10.png" alt="drawing" width="200">
 </figure>
 
 - For the first one, given Y, X and Z are conditionally independent. (Common Cause)
@@ -199,7 +199,7 @@ There are some structures that d-separation algorithm does a great job on and wi
 ## Topology limits distributions
 These conditional independencies enable us to group probabilistic models. There are 3 types of triple sets regarding to independency which is shown in the following figure:
 
-<img src="./Images_P3/conditional_indep_types.png" alt="drawing" width="600">
+<img src="./images_p3/conditional_indep_types.png" alt="drawing" width="600">
 
 - Green colored independency triples in which every pair of RVs are independent of each other.(G)
 - Red colored independency triples in which two RVs are independent given the 3rd one.(R)

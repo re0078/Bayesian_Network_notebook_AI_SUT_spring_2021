@@ -61,18 +61,22 @@
     </p>
   - ### independence
     • Two variables are independent if:  
-    <img src="./images/part-1/AI-1.png" alt="drawing" width="300">    
+
+    <img src="./images_p1/AI-1.png" alt="drawing" width="300">    
+
     This says that their joint distribution factors into a product two simpler distributions  
     Independence is a simplifying modeling assumption
     #### Example: 
-    <img src="./images/part-1/Independence.png" alt="drawing" width="500">  
+    <img src="./images_p1/Independence.png" alt="drawing" width="500">  
 
     So we turn it into two more tables where we can work with two variables instead of three.  
     and make order from 2 power n to 2n
 
 - ### Conditional Independence
     #### Let us first give an example:
-    <img src="./images/part-1/AI-3.png" alt="drawing" width="500">
+
+    <img src="./images_p1/AI-3.png" alt="drawing" width="400">
+
     Suppose we have three variables in tooth decay  
   1.cavity  
   2.toothache  
@@ -99,7 +103,9 @@
   
 
     #### another Example : 
-    <img src="./images/part-1/AI-4.png" alt="drawing" width="500">
+
+    <img src="./images_p1/AI-4.png" alt="drawing">
+
      Here are three variables:  
     1. smoke
     2. Fire
@@ -143,7 +149,8 @@ $$ P(x_1,x_2,x_3,..,x_n) = \prod_{i=1}^{n} P(x_i|Parents(X_i))$$
 In this lecture note we will discuss some methods that help us *infer* useful information from BN and calculate some given condtional probability distributions using those methods. -->
 
 ## Introduction to Bayes’ Networks  
-<img src="./images/part-1/Bayes.png" alt="drawing" width="500"> 
+
+<img src="./images_p1/Bayes.png" alt="drawing" width="500"> 
   
  - ### Definition
       • Two problems with using full joint distribution tables
@@ -162,7 +169,7 @@ than a few variables at a time
     - For about 10 min, we’ll be vague about how these
  interactions are specified
 
-<img src="./images/part-1/GMN.png" alt="drawing" width="500">
+<img src="./images_p1/GMN.png" alt="drawing" width="500">
 
 - ### Graphical Model Notation
     - Nodes: variables (with domains)  
@@ -178,6 +185,6 @@ causation (in general, they don’t!)
 
 The question that was first created for us for insurance now we show with Bayes Net :
 
-<img src="./images/part-1/AI-5.png" alt="drawing" width="500">
+<img src="./images_p1/AI-5.png" alt="drawing" width="500">
 
 

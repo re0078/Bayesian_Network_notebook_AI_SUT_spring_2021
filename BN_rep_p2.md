@@ -27,7 +27,7 @@ These are some examples of how uncertain environment variables can be modeled as
     Problem of tossing n independent coins is an example of modeling a probabilistic environment. No interaction between coins results in absolute independency.
 
     <figure>
-    <img src="./images/coin_flip_example.png" alt="drawing" width="400">
+    <img src="./images_p2/coin_flip_example.png" alt="drawing" width="400">
     <figcaption>BN for independent coin flip of n coins</figcaption>
     </figure>
 
@@ -38,13 +38,13 @@ These are some examples of how uncertain environment variables can be modeled as
     
     - Two models can be considered for such a problem:
      <br>
-      <img src="./images/rain_traffic_1.png" alt="drawing" width="200">
+      <img src="./images_p2/rain_traffic_1.png" alt="drawing" width="200">
       <br>
       An agent using dependent model usually is more realistic.
   
 
 - ### **Second Traffic** 1
-    <img src="./images/traffic_II_example.png" alt="drawing" width="500">
+    <img src="./images_p2/traffic_II_example.png" alt="drawing" width="500">
     
     - Variables:
       - T: Traffic.
@@ -57,7 +57,7 @@ These are some examples of how uncertain environment variables can be modeled as
     - Model: 
         Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent of other variables, so BN of this environment is presented in the following figure:
 
-        <img src="./images/second_traffic_1.png" alt="drawing" width="300">
+        <img src="./images_p2/second_traffic_1.png" alt="drawing" width="300">
         
         In this environment rain can cause ballgame be canceled, so B is slightly dependent on R which is shown by blue arrow from R to B, but to keep our model as simple as possible, we tend to not include this relation in our BN. This results in ignoring some information from problem's environment, So we need to keep a balance between model simplicity and information loss.
 
@@ -70,14 +70,15 @@ These are some examples of how uncertain environment variables can be modeled as
       - J: John calls
       - E: Earthquake
     - Representation: <br>
-      <img src="./images/alarm_network_1.png" alt="drawing" width="180">
+      <img src="./images_p2/alarm_network_1.png" alt="drawing" width="180">
 
 ## **Bayes' Net Semantics**
 BN is a directed acyclic graph in which every node refers to the probability of a random variable X conditioned to its parents. Here 
 $$P(X | A_1, A_2, A_3, .., A_n)$$
 means probability distribution of any x conditioned to every possible combination of its parents (A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>, ....A<sub>n</sub>).  All these probability combinations are gathered in a table called conditional probability table (CPT). The following figure shows an example of CPT:
 
-<img src="./images/bn_semantics.png" alt="drawing" width="200"><br>
+<img src="./images_p2/bn_semantics.png" alt="drawing" width="200">
+
 So every BN consists of **Topology**(graph) and **Local Conditional Probabilities**.
 
 Bayes' Net *implicitly* encodes joint distribution. Joint distribution of random variables included in a BN is calculated using the product of all local conditional distributions. The following equation shows explicit formula:
@@ -90,7 +91,8 @@ where x<sub>i</sub> is an observation of X<sub>i</sub>.
 Here is an example of how a joint distribution is embedded in a BN:
 
 
-<img src="./images/joint_example.png" alt="drawing" width="400"><br>
+<img src="./images_p2/joint_example.png" alt="drawing" width="400">
+
 To compute P(+cavity, +catch, -toothache):
 $$P(+cavity, +catch, -toothache) = \\P(+cavity|parents(Cavity))  \times P(+catch|parents(Catch)) \\\times P(+toothache|parents(Toothache)) \\
 = P(+cavity) \times P(+catch|+cavity) \times P(-toothache|+cavity)$$
@@ -162,17 +164,21 @@ $$
 
 ### **Bayes' Net Probability Examples**
 
+
 #### **Coin Flips** 2
-<img src="./images/coin_flip_2.png" alt="drawing" ><br>
+<img src="./images_p2/coin_flip_2.png" alt="drawing" ><br>
 
 #### **Traffic** 2
-<img src="./images/traffic_2.png" alt="drawing" width="400"><br>
+
+<img src="./images_p2/traffic_2.png" alt="drawing" width="400"><br>
 
 #### **Reverse Traffic** 1
-<img src="./images/reverse_traffic_1.jpg" alt="drawing" width="400"><br>
+
+<img src="./images_p2/reverse_traffic_1.jpg" alt="drawing" width="400"><br>
 
 #### **Alarm Network** 2
-<img src="./images/alarm_network_2.png" alt="drawing" width="800"><br>
+
+<img src="./images_p2/alarm_network_2.png" alt="drawing" width="800">
 
 
 ## **Bayes' Net Size Analysis**
@@ -195,11 +201,11 @@ Assume we have 3 random variables:
 
 Its BN would be like this:
 
-<img src="./images/causal_relation_p1.png" alt="drawing" ><br>
+<img src="./images_p2/causal_relation_p1.png" alt="drawing" ><br>
 
 Now if our agent is not able to know about whether it's raining or not, It will have only 2 random variables (T, D) and the BN will be one of these two(since T and D are not independent):
 
-<img src="./images/causal_relation_p2.png" alt="drawing"><br>
+<img src="./images_p2/causal_relation_p2.png" alt="drawing"><br>
 
 So there might be an arrow from T to D or back from D to T, when there is no causal relation between them. In conclusion, BN do not necessarily reflect a causal pattern.
 
@@ -208,7 +214,8 @@ BN topology may happen to encode causal structure, but what it really encodes is
 
 
 ## Conditional Independencies in Bayes' Net
-<img src="./images/cond_indep_intro.png" alt="drawing" width="400"><br>
+
+<img src="./images_p2/cond_indep_intro.png" alt="drawing" width="400"><br>
 
 In this BN we already know these relations:
 $$
@@ -227,4 +234,4 @@ P(W|X,Y) = \sum_Z P(W,Z|X,Y) = \sum_Z \frac{P(W,Z,X,Y)}{P(X,Y)} \\
 = \sum_Z \frac{P(X)P(Y|X)P(Z|Y)P(W|Z)}{P(X)P(Y|X)} = \sum_Z P(Z|Y)P(W|Z) \\ \Rightarrow const.\ w.r.t.\ X
 $$
 
-So Here is a cond. independency that can be concluded from BN. Is there any algorithm that can exploit all possible cond. independencies?
+So here is a cond. independency that can be concluded from BN. Is there any algorithm that can exploit all possible cond. independencies?
