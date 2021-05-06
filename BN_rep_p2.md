@@ -4,6 +4,10 @@
 - [**Bayesian Network: Representation**](#bayesian-network-representation)
   - [**Table of Content**](#table-of-content)
   - [**Bayes' Net Examples**](#bayes-net-examples)
+    - [**Coin Flips** 1](#coin-flips-1)
+    - [**Traffic** 1](#traffic-1)
+    - [**Second Traffic** 1](#second-traffic-1)
+    - [**Alarm Network** 1](#alarm-network-1)
   - [**Bayes' Net Semantics**](#bayes-net-semantics)
     - [**example**](#example)
     - [**Joint Dist. Validation**](#joint-dist-validation)
@@ -23,54 +27,54 @@
 ## **Bayes' Net Examples**
 These are some examples of how uncertain environment variables can be modeled as Bayesian Network. Try to justify relations between those variable to get a better grasp of how BN works.
 
-- ### **Coin Flips** 1
-    Problem of tossing n independent coins is an example of modeling a probabilistic environment. No interaction between coins results in absolute independency.
+### **Coin Flips** 1
+  Problem of tossing n independent coins is an example of modeling a probabilistic environment. No interaction between coins results in absolute independency.
 
-    <figure>
-    <img src="./images_p2/coin_flip_example.png" alt="drawing" width="400">
-    <figcaption>BN for independent coin flip of n coins</figcaption>
-    </figure>
+  <figure>
+  <img src="./images_p2/coin_flip_example.png" alt="drawing" width="400">
+  <figcaption>BN for independent coin flip of n coins</figcaption>
+  </figure>
 
-- ### **Traffic** 1
-    - Variables:
-        - R: It rains
-        - T: There is a traffic on the road.
-    
-    - Two models can be considered for such a problem:
-     <br>
-      <img src="./images_p2/rain_traffic_1.png" alt="drawing" width="200">
-      <br>
-      An agent using dependent model usually is more realistic.
+### **Traffic** 1
+  - Variables:
+      - R: It rains
+      - T: There is a traffic on the road.
+  
+  - Two models can be considered for such a problem:
+   <br>
+    <img src="./images_p2/rain_traffic_1.png" alt="drawing" width="200">
+    <br>
+    An agent using dependent model usually is more realistic.
   
 
-- ### **Second Traffic** 1
-    <img src="./images_p2/traffic_II_example.png" alt="drawing" width="500">
-    
-    - Variables:
-      - T: Traffic.
-      - R: It rains.
-      - L: Low air pressure.
-      - D: Stadium roof drips.
-      - B: There is a ballgame.
-      - C: There is a cavity in *Russell* 's teeth (name of the green monster).
+### **Second Traffic** 1
+  <img src="./images_p2/traffic_II_example.png" alt="drawing" width="500">
+  
+  - Variables:
+    - T: Traffic.
+    - R: It rains.
+    - L: Low air pressure.
+    - D: Stadium roof drips.
+    - B: There is a ballgame.
+    - C: There is a cavity in *Russell* 's teeth (name of the green monster).
 
-    - Model: 
-        Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent of other variables, so BN of this environment is presented in the following figure:
+  - Model: 
+      Low pressure might cause rain (R is dependent to L) and rain might cause traffic. A ballgame being held also might cause traffic and rain causes drips from stadium roof. *Russell*'s tooth cavity  is independent of other variables, so BN of this environment is presented in the following figure:
 
-        <img src="./images_p2/second_traffic_1.png" alt="drawing" width="300">
-        
-        In this environment rain can cause ballgame be canceled, so B is slightly dependent on R which is shown by blue arrow from R to B, but to keep our model as simple as possible, we tend to not include this relation in our BN. This results in ignoring some information from problem's environment, So we need to keep a balance between model simplicity and information loss.
+      <img src="./images_p2/second_traffic_1.png" alt="drawing" width="300">
+      
+      In this environment rain can cause ballgame be canceled, so B is slightly dependent on R which is shown by blue arrow from R to B, but to keep our model as simple as possible, we tend to not include this relation in our BN. This results in ignoring some information from problem's environment, So we need to keep a balance between model simplicity and information loss.
 
-- ### **Alarm Network** 1
-    Assume there is an alarm system in your house which is supposed to go off when a burglary happens. It also might go off if an earthquake happens. If alarm goes off Marry and John might call you. What is the BN representation of this environment.
-    - Variables:
-      - B: Burglary
-      - A: Alarm goes off
-      - M: Marry calls
-      - J: John calls
-      - E: Earthquake
-    - Representation: <br>
-      <img src="./images_p2/alarm_network_1.png" alt="drawing" width="180">
+### **Alarm Network** 1
+  Previousy, we were interoduced to this problem to get familiar with probabilistic environment and problem scenarios. Here we present its varaibles and related Bayesian Network:
+  - Variables:
+    - B: Burglary
+    - A: Alarm goes off
+    - M: Marry calls
+    - J: John calls
+    - E: Earthquake
+  - Representation: <br>
+    <img src="./images_p2/alarm_network_1.png" alt="drawing" width="180">
 
 ## **Bayes' Net Semantics**
 BN is a directed acyclic graph in which every node refers to the probability of a random variable X conditioned to its parents. Here 
