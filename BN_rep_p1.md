@@ -4,7 +4,8 @@
 
 - [Introduction](#introduction)
 - [Probabilistic Models](#Probabilistic-Models)
-
+- [Conditional Independence](#Conditional-Independence)
+- [Introduction to Bayes’ Networks](#Introduction-to-Bayes’-Networks)
 ## Introduction
 
 - ## Probabilistic Models
@@ -34,23 +35,32 @@
     **Let us first give an example :**  
     &nbsp;&nbsp;&nbsp;&nbsp; **A Reasoning Scenario**
 
-    <To style="padding-left:19px">I'm at work, neighbor John calls to say that y alram is ringing, but enighbor Mary doesn't ccall. SOmetimes it's set off by minor earthquakes. Is there a burglar?
+    <To style="padding-left:19px">I'm at work, neighbor John calls to say that my alram is ringing, but neighbor Mary doesn't call. Sometimes it's set off by minor earthquakes. Is there a burglar?
     To answer this question, we must first make a statistical model and then draw a statistical inference
     So we have statistical language:
 
   - Variables:  
+
+    
      - B: + | - (boolean) (true for exsit burglar).  
      - J: + | - (boolean) (true if John call me).  
      - M: + | - (boolean) (true if Mery call me).  
      - A: + | - (boolean) (true if alarm is ringing).  
       
      **P(B=+b , J=+j , M=+m)/p(A) A=( J=+j , M=-n)**  
+
+
+
+
+        
      Which is the interpretation of the above speech  
-     Are the variables independent of each other?  
-     Should John call us randomly, is there any trust in her words?  
+     **Are the variables independent of each other?**      
+     **Should John call us randomly, is there any trust in her words?**    
      So it must be said that these variables will have an interdependence
     And this is not how the probability can be calculated and we need more information, which we will get acquainted with later, a concept called
     **joint property distribution**  
+
+
     Now suppose we know the probability that a series of random variables will occur together, in this example John and Marry and alarms and earthquakes (in this example each of these variables is binary and makes things easier for us)
     That we have five variables that must create two to the power of five states
     Which creates a 32-row table whose columns are variables and the last column is the probability  
@@ -62,33 +72,38 @@
   - ### independence
     • Two variables are independent if:  
 
-    <img src="./images_p1/AI-1.png" alt="drawing" width="300">    
+    <!-- <img src="./images_p1/AI-1.png" alt="drawing" width="300">     -->
+
+    $$\begin{cases}
+     \gamma   x,y P(x, y) = P(x)P(y)
+    \end{cases}$$  
 
     This says that their joint distribution factors into a product two simpler distributions  
     Independence is a simplifying modeling assumption
-    #### Example: 
+    #### Example:   
+
     <img src="./images_p1/Independence.png" alt="drawing" width="500">  
 
     So we turn it into two more tables where we can work with two variables instead of three.  
-    and make order from 2 power n to 2n
+    and make order from 2 power n to 2n .
 
 - ### Conditional Independence
     #### Let us first give an example:
+    ### first example:
+     <img src="./images_p1/AI-3.png"  alt="drawing" width="400">
 
-    <img src="./images_p1/AI-3.png" alt="drawing" width="400">
-
-    Suppose we have three variables in tooth decay  
-  1.cavity  
-  2.toothache  
-  3.catch  
-  • If I have a cavity, the probability that the probe catches in it
-    doesn't depend on whether I have a toothache:   
+    Suppose we have three variables in tooth decay : 
+    1.cavity  
+    2.toothache  
+    3.catch  
+    • If I have a cavity, the probability that the probe catches in it.
+      doesn't depend on whether I have a toothache:   
 
 
-  - P(+catch | +toothache, +cavity) = p(+catch | +cavity)  
+    - P(+catch | +toothache, +cavity) = p(+catch | +cavity)  
 
-  • The same independence holds if I don’t have a cavity:  
-    - P(+catch | +toothache, -cavity) = p(+catch| -cavity)
+    • The same independence holds if I don’t have a cavity:  
+      - P(+catch | +toothache, -cavity) = p(+catch| -cavity)
 
     Now to reduce the dependencies, imagine that the person's tooth has a cavity. Two variables of the person have a toothache and the catch of a bad tooth is defined as two separate variables.  
     The catch and toothache dependence is due to the cavity. If we know that the cavity has occurred, it is as if we have eliminated the catch and toothache dependence.
@@ -103,7 +118,7 @@
   
 
     #### another Example : 
-
+    ### seccond example:
     <img src="./images_p1/AI-4.png" alt="drawing">
 
      Here are three variables:  
@@ -166,7 +181,7 @@ than a few variables at a time
    - We describe how variables locally interact  
    - Local interactions chain together to give global, indirect
  interactions
-    - For about 10 min, we’ll be vague about how these
+    -  we’ll be vague about how these
  interactions are specified
 
 <img src="./images_p1/GMN.png" alt="drawing" width="500">
